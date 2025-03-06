@@ -1,0 +1,92 @@
+<video id="meuVideo" width="800" height="450" controls autoplay controlsList="nodownload">
+    <source src="http://files.cod3r.com.br/curso-web/video.mp4" type="video/mp4">
+    Seu browser não suporta a tag de vídeo.
+</video>
+
+<div wm-progresso="meuVideo" class="progresso">
+    <div></div>
+</div>
+
+<div>
+    <button wm-play="meuVideo">Play</button>
+    <button wm-pause="meuVideo">Pause</button>
+</div>
+
+<style>
+video {
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.progresso {
+    height: 20px;
+    width: 500px;
+    border: solid 1px #007A99; /* Ciano profundo */
+    margin: 20px auto 10px auto; /* Reduzindo margem inferior para aproximar os botões */
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #D0F0F0; /* Ciano suave */
+}
+
+.progresso > div {
+    background-color: #00CED1; /* Turquesa médio */
+    color: #004F4F; /* Ciano escuro */
+    height: 100%;
+    text-align: right;
+    font-size: 14px;
+    width: 0%;
+    padding-right: 5px;
+    line-height: 20px;
+    border-radius: 10px;
+    transition: width 0.3s ease-in-out;
+}
+
+.controles {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 5px; /* Aproximando os botões da barra de progresso */
+}
+
+button {
+    background-color: #008B8B; /* Ciano escuro */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    justify-items: center;
+}
+
+button:hover {
+    background-color: #005F5F; /* Ciano mais escuro */
+}
+
+</style>
+
+<script>
+    function configurarVideo(id) {
+        const video = document.getElementById(id)
+        video.oncontextmenu = () => false
+
+        document.querySelector(`[wm-play=${id}]`).onclick = e => video.play()
+        document.querySelector(`[wm-pause=${id}]`).onclick = e => video.pause()
+
+        setInterval(() => {
+            const percentual = (video.currentTime / video.duration) * 100
+            const valorDiv = document.querySelector(`[wm-progresso=${id}] > div`)
+            valorDiv.style.width = `${percentual}%`
+            valorDiv.innerHTML = `${percentual.toFixed(1)}%`
+        }, 500)
+    }
+
+    configurarVideo('meuVideo')
+</script>
