@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Formulário</h1>
+
+        <form method="POST" action="http://localhost:3003/usuarios">
+            <input type="hidden" name="id" value="3">
+
+            <div class="form-group">
+                <label for="name">Nome</label>
+                <input type="text" id="name" name="name" placeholder="Digite seu nome">
+            </div>
+
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" placeholder="Digite sua senha">
+            </div>
+
+            <div class="form-group">
+                <label for="bio">Bio</label>
+                <textarea id="bio" name="bio" cols="30" rows="10" placeholder="Conte um pouco sobre você"></textarea>
+            </div>
+
+            <fieldset class="form-group">
+                <legend>Tipo de Usuário</legend>
+                <label for="admin">
+                    <input type="radio" id="admin" name="tipo" value="admin"> Admin
+                </label>
+                <label for="regular">
+                    <input type="radio" id="regular" name="tipo" value="regular"> Regular
+                </label>
+                <label for="professor">
+                    <input type="radio" id="professor" name="tipo" value="professor"> Professor
+                </label>
+            </fieldset>
+
+            <div class="form-group">
+                <label for="ativo">
+                    <input type="checkbox" id="ativo" name="ativo"> Ativo
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label for="estado">Estado</label>
+                <select id="estado" name="estado">
+                    <option value="">Selecione</option>
+                    <option value="ac">Acre</option>
+                    <option value="ba">Bahia</option>
+                    <option value="ce">Ceará</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="interesses">Interesses</label>
+                <select id="interesses" name="interesses" multiple size="7">
+                    <option value="js">Javascript</option>
+                    <option value="java">Java</option>
+                    <option value="php">PHP</option>
+                    <option value="python">Python</option>
+                    <option value="go">Go</option>
+                    <option value="c">C</option>
+                </select>
+            </div>
+
+            <div class="form-group buttons">
+                <button type="submit">Incluir</button>
+                <button formaction="http://localhost:3003/usuarios/3" type="submit">Alterar</button>
+            </div>
+        </form>
+    </div>
+
+    <style>
+        /* Reset e estrutura básica */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 100px;
+            padding: 100px;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00bcd4;
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input,
+        textarea,
+        select,
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            box-sizing: border-box;
+            background-color: #f0f8ff;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            display: inline-block;
+            width: auto;
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: #00bcd4;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0097a7;
+        }
+
+        select,
+        textarea {
+            transition: border-color 0.3s;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #00bcd4;
+            outline: none;
+        }
+
+        fieldset {
+            border: none;
+            padding: 0;
+        }
+
+        legend {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        @media (max-width: 500px) {
+            .form-container {
+                width: 90%;
+                padding: 20px;
+            }
+        }
+    </style>
+</body>
+</html>

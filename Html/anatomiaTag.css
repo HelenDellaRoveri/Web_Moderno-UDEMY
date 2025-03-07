@@ -1,0 +1,24 @@
+TAG {
+    display: block;
+    background-color: #D0F0F0; /* Ciano suave */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+bla {
+    display: block;
+    background-color: #00CED1; /* Ciano médio */
+    padding: 15px;
+    border-radius: 8px;
+}
+
+opa {
+    display: inline-block;
+    background-color: #008B8B; /* Ciano escuro */
+    color: white;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+}
